@@ -11,19 +11,7 @@ import ChatRoom from "./comp/ChatRoom";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyDp6z0_0Ty_Fj0eb9g6ZSCT_GA8qgDIzTo",
-  authDomain: "reactchat-7d5e7.firebaseapp.com",
-  databaseURL: "https://reactchat-7d5e7.firebaseio.com",
-  projectId: "reactchat-7d5e7",
-  storageBucket: "reactchat-7d5e7.appspot.com",
-  messagingSenderId: "563729060578",
-  appId: "1:563729060578:web:d5cf6c95123f7a4e6d04bb",
-  measurementId: "G-WPXCXV7N74",
-};
+import firebaseConfig from "./appInfo";
 
 firebase.initializeApp(firebaseConfig);
 
