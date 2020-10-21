@@ -1,0 +1,29 @@
+.recievedMsg {
+  width: calc(100vw - 5rem);
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sentMsg {
+  width: calc(100vw - 5rem);
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.msgImg {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
+.msg {
+  background: #aaa;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  border-radius: 0.1rem;
+}

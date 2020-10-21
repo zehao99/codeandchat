@@ -1,0 +1,15 @@
+@import "./comp/Color.scss";
+
+.App {
+  button {
+    padding: 0.5rem;
+    background-color: $lightTextColorComplimentary;
+    border-radius: 0.5rem;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $btnHoverBackgroundColor;
+    }
+  }
+}
