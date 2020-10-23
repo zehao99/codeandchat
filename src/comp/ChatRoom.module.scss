@@ -1,0 +1,60 @@
+@import "./Color.scss";
+
+.chatPageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.chatContainer {
+  height: 100vh;
+}
+.chatMsgShow {
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 0;
+  margin: 1rem 0;
+  height: calc(80vh - 10vh - 2rem);
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    background: none;
+    height: 3px;
+    width: 3px;
+    margin: 0 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e3c084;
+    border-radius: 10px;
+  }
+}
+
+.userOptions {
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatInput {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  textarea {
+    height: calc(20vh - 2rem);
+    flex: 1;
+    margin: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    text-align: left;
+    padding: 1rem;
+    background-color: #e0efff;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+    }
+  }
+  button {
+    margin: 1rem;
+  }
+}

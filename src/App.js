@@ -19,14 +19,13 @@ const authenticate = firebase.auth();
 const firestoreDB = firebase.firestore();
 
 function App() {
-  const [auth, setAuth] = useState(authenticate);
-  const [firestore, setFirestore] = useState(firestoreDB);
+  const [auth] = useState(authenticate);
+  const [firestore] = useState(firestoreDB);
   const [user] = useAuthState(auth);
   return (
     <AuthContext.Provider value={auth}>
       <FirestoreContext.Provider value={firestore}>
         <div className={styles.App}>
-          <header></header>
           <section>{user ? <ChatRoom /> : <SignIn />}</section>
         </div>
       </FirestoreContext.Provider>

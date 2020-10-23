@@ -11,9 +11,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "ace-builds": "^1.4.12",
+    "diff-match-patch": "^1.0.5",
     "firebase": "^7.24.0",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
+    "react-ace": "^9.1.4",
     "react-dom": "^16.14.0",
     "react-firebase-hooks": "^2.2.0",
     "react-scripts": "3.4.3"

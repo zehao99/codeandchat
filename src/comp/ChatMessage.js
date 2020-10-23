@@ -7,11 +7,13 @@ function ChatMessage(props) {
   const { text, uid, photoURL } = props.msg;
   const messageClass =
     uid === auth.currentUser.uid ? styles.sentMsg : styles.recievedMsg;
+    const msgTextClass = 
+    uid === auth.currentUser.uid ? styles.sentMsgText : styles.recievedMsgText;
 
   return (
     <div className={messageClass}>
       <img className={styles.msgImg} alt="" src={photoURL} />
-      <p className={styles.msg}>{text}</p>
+      <p className={msgTextClass}>{text}</p>
     </div>
   );
 }

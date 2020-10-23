@@ -14,7 +14,7 @@ export default function SignIn() {
 
   return (
     <div className={styles.signInPage}>
-      <h1>Welcome to the chat</h1>
+      <h1>Welcome to Code and Chat, have fun.</h1>
       <button onClick={signInWithGoogle}>
         <FontAwesomeIcon icon={faGoogle} style={{ paddingRight: "0.5rem" }} />
         Sign in with Google
