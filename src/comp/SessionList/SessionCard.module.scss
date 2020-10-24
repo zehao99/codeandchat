@@ -1,0 +1,39 @@
+@import "../Color.scss";
+
+.sessionCardContainer {
+  background: rgba(255, 255, 255, 0.8);
+  width: 80vh;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+
+  a {
+    margin: 0 0.5rem;
+  }
+
+  button {
+    color: $lightTextColorComplimentary;
+    background-color: $primaryColor;
+    &:hover {
+      background-color: $skillCardBackgroundColor;
+    }
+  }
+}
+
+.sessionInfo {
+  flex: 1;
+}
+
+.sessionID {
+  font-family: "Trispace", sans-serif;
+  font-size: 1.1rem;
+  color: $primaryColor;
+}
+
+.sessionOwner {
+  font-family: "Trispace", sans-serif;
+  margin-top: 0.3rem;
+  color: $primaryColorComplimentary;
+}

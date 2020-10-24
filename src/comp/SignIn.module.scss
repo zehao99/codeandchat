@@ -9,6 +9,39 @@
   justify-content: center;
 
   h1 {
+    font-family: "Trispace", sans-serif;
     color: $lightTextColor;
+    padding: 0rem;
+  }
+  p {
+    font-size: 1.1rem;
+    color: $secondaryColor;
+    width: 50vw;
+    text-align: center;
+    line-height: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 3rem;
+    border-radius: 1rem;
+  }
+
+  button {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+
+  a {
+    background-color: transparent;
+    font-family: "Trispace", sans-serif;
+    color: $logoColor;
+    font-size: 1.2rem;
+    margin-top: 5rem;
+
+    &:visited {
+      color: $logoColor;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $primaryColorComplimentary;
+    }
   }
 }

@@ -1,11 +1,46 @@
 @import "./comp/Color.scss";
 
 .App {
+  font-family: "Syne Mono", "Roboto", "Noto Sans JP", sans-serif;
+
   button {
+    font-family: "Syne Mono", "Roboto", "Noto Sans JP", sans-serif;
+    font-size: 14px;
     padding: 0.5rem;
     background-color: $lightTextColorComplimentary;
     border-radius: 0.5rem;
     border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $btnHoverBackgroundColor;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  a {
+    font-family: "Syne Mono", "Roboto", "Noto Sans JP", sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: $primaryColor;
+    padding: 0.5rem;
+    background-color: $lightTextColorComplimentary;
+    border-radius: 0.5rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:visited {
+      color: $primaryColor;
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
 
     &:hover {
       cursor: pointer;

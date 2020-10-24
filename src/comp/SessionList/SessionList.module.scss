@@ -1,0 +1,53 @@
+@import "../Color.scss";
+
+.sessionsTitle {
+  color: $lightTextColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-family: "Trispace", sans-serif;
+    display: inline;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.joinOptions {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 80vw;
+  input {
+    background-color: #e0efff;
+    font-family: "Trispace", sans-serif;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+    flex: 1;
+    padding: 0 1rem;
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+    }
+  }
+
+  button {
+    margin: 0 0.5rem;
+  }
+}
+
+.sessionCardContainer {
+  width: 100vw;
+  height: 80vh;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    background: none;
+    height: 3px;
+    width: 3px;
+    margin: 0 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e3c084;
+    border-radius: 10px;
+  }
+}

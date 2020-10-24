@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect} from "react";
+import React, { useState, useRef, useContext } from "react";
 import { AuthContext, FirestoreContext } from "../context/AuthContext";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase/app";
@@ -7,14 +7,12 @@ import "firebase/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import SignOut from "./SignOut";
 import styles from "./ChatRoom.module.scss";
-import AceEditor from "react-ace";
 import useWindowDimensions from "../utilities/useWindowDimensions";
+import CodeEditor from "./CodeEditor";
+import { useParams, NavLink } from "react-router-dom";
 
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/snippets/java";
-import "ace-builds/src-noconflict/theme-monokai";
-import diff_match_patch from "diff-match-patch";
 function ChatRoom(props) {
+  const { sessionID } = useParams();
   const { width, height } = useWindowDimensions();
   const auth = useContext(AuthContext);
   const firestore = useContext(FirestoreContext);
@@ -24,55 +22,6 @@ function ChatRoom(props) {
 
   const [messages] = useCollectionData(query, { idField: "id" });
   const [formValue, setFormValue] = useState("");
-  
-  const codeRefe = useRef();
-
-  const codeRef = firestore.collection("codes");
-  const codeQuery = codeRef.orderBy("createdAt","desc").limit(1);
-  const [code] = useCollectionData(codeQuery, { idField: "id" });
-  const [codeInput, setCodeinput] = useState("");
-  const [patchedCode, setPatchedCode] = useState("");
-  const [lastUpdate, setLastUpdate] = useState(" ");
-  const dmp = new diff_match_patch();
-
-  useEffect(() => {
-    if(!code || !code[0]) return;
-    const recievedCode = code[0].code;
-    if(recievedCode === patchedCode) return;
-    if(recievedCode !== codeInput){
-
-      let patch_list = dmp.patch_make(lastUpdate, recievedCode);
-      let results = dmp.patch_apply(patch_list, codeInput);
-      setPatchedCode(results[0]);
-      setCodeinput(results[0]);
-    }else{
-      setPatchedCode(recievedCode);
-    }
-    setLastUpdate(recievedCode);
-    const timer2 = setTimeout(100);
-    return () => {
-      clearTimeout(timer2);
-    }
-  }, [code]);
-
-
-  useEffect(() => {
-    if(!codeRefe.current.props.value || codeInput === patchedCode) return;
-    const timer = setTimeout(async ()=>{
-      const {uid} = auth.currentUser;
-      if(codeInput === codeRefe.current.props.value){
-        await codeRef.add({
-          code: codeInput,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          uid,
-        })
-      }
-    },500)
-    return () => {
-      clearTimeout(timer);
-    }
-  }, [codeInput])
-
 
   const dummy = useRef();
   const sendMessage = async (e) => {
@@ -90,10 +39,7 @@ function ChatRoom(props) {
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
-
-  const onEditorChange = (val) => {
-    setCodeinput(val);
-  };
+  // 0XfSsvyAZmgZGq58CoTR
 
   const ctx =
     width < height ? (
@@ -101,21 +47,11 @@ function ChatRoom(props) {
     ) : (
       <div className={styles.chatPageContainer}>
         <div className={styles.codeEditor}>
-          <AceEditor
-            ref={codeRefe}
-            mode="java"
-            theme="monokai"
-            value={codeInput}
-            onChange={onEditorChange}
-            name="codeEditor"
-            editorProps={{ $blockScrolling: true }}
-            width="100%"
-            height="100vh"
-          />
+          <CodeEditor docID={sessionID} />
         </div>
         <div className={styles.chatContainer}>
           <div className={styles.userOptions}>
-            <SignOut />
+            <NavLink to="/"> Back </NavLink>
           </div>
           <div className={styles.chatMsgShow}>
             {messages &&
