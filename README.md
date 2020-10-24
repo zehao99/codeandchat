@@ -1,4 +1,4 @@
-# A chatting app using React and Firebase
+# Serverless app for coding collaboration and chatting using React and Firebase
 
 ## UpNext
 
