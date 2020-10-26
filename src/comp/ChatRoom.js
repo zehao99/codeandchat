@@ -9,6 +9,8 @@ import styles from "./ChatRoom.module.scss";
 import CodeEditor from "./CodeEditor";
 import { useParams, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 function ChatRoom(props) {
   const { sessionID } = useParams();
@@ -23,9 +25,7 @@ function ChatRoom(props) {
   const [formValue, setFormValue] = useState("");
 
   const dummy = useRef();
-  const sendMessage = async (e) => {
-    e.preventDefault();
-
+  const sendMessage = async () => {
     const { uid, photoURL } = auth.currentUser;
     if (formValue === "" || !formValue) return;
     await messageRef.add({
@@ -37,6 +37,19 @@ function ChatRoom(props) {
 
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await sendMessage();
+  };
+
+  const handleEnterSend = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage("1");
+    }
   };
 
   const ctx = (
@@ -57,7 +70,9 @@ function ChatRoom(props) {
               ? auth.currentUser.displayName
               : "Untitled User"}
           </p>
-          <NavLink to="/"> Back </NavLink>
+          <NavLink to="/">
+            <FontAwesomeIcon icon={faChevronLeft} /> Back
+          </NavLink>
         </div>
         <div className={styles.chatMsgShow}>
           {messages &&
@@ -65,9 +80,11 @@ function ChatRoom(props) {
 
           <div ref={dummy}></div>
         </div>
-        <form onSubmit={sendMessage} className={styles.chatInput}>
+        <form onSubmit={handleSubmit} className={styles.chatInput}>
           <textarea
+            placeholder="Say Something"
             value={formValue}
+            onKeyPress={handleEnterSend}
             onChange={(e) => setFormValue(e.target.value)}
           />
           <button type="submit">Send</button>

@@ -1,0 +1,25 @@
+@import "./Color.scss";
+
+.languageSelector {
+  display: flex;
+  height: 8vh;
+  align-items: center;
+  font-size: 0.9rem;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.06);
+
+  p {
+    color: $lightTextColorComplimentary;
+    margin: auto 1rem;
+  }
+
+  .autocompleteButton {
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}

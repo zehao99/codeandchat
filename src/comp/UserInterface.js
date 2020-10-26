@@ -84,17 +84,23 @@ function UserInterface(props) {
     if (contain) return;
     temp.sessions.push({ id: docRef.id, email: docRef.owner.email });
     setUserInfo(temp);
-    userQuery.set(userInfo);
   };
 
   const deleteSessionFromUser = (id) => {
+    console.log(id);
     const temp = { ...userInfo };
     temp.sessions = temp.sessions.filter((e) => {
       return e.id !== id;
     });
     setUserInfo(temp);
-    userQuery.set(userInfo);
   };
+
+  useEffect(() => {
+    console.log(userInfo);
+    if (userInfo) {
+      userQuery.set(userInfo);
+    }
+  }, [userInfo]);
 
   return (
     <Router>

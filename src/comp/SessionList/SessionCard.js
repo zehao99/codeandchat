@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const SessionCard = (props) => {
   return (
     <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.4 }}
+      initial={{ opacity: 0, x: 200 }}
+      animate={{ opacity: [0, 1, 1], x: [200, -50, 0] }}
+      transition={{ duration: 0.4, x: { stiffness: 10, velocity: -100 } }}
       className={styles.sessionCardContainer}
     >
       <div className={styles.sessionInfo}>

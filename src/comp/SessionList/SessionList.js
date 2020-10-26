@@ -21,9 +21,9 @@ const SessionList = (props) => {
   return (
     <div>
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4 }}
+        initial={{ y: -100 }}
+        animate={{ y: [-100, 10, 0] }}
+        transition={{ duration: 0.4, y: { stiffness: 1000, velocity: -100 } }}
         className={styles.sessionsTitle}
       >
         <img src={auth.currentUser.photoURL} alt="userImg" />
@@ -37,9 +37,9 @@ const SessionList = (props) => {
         <SignOut />
       </motion.div>
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4 }}
+        initial={{ y: -100 }}
+        animate={{ y: [-100, 10, 0] }}
+        transition={{ duration: 0.4, y: { stiffness: 1000, velocity: -100 } }}
         className={styles.joinOptions}
       >
         <input

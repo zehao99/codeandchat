@@ -5,9 +5,20 @@ import { useState, useEffect } from "react";
  */
 
 export function getJudgeTouch() {
-  const { userAgent, maxTouchPoints } = navigator;
+  const { userAgent, maxTouchPoints, platform } = navigator;
+  let isTouch = false;
+  // All Multi-TouchDevice
+  if( maxTouchPoints > 1 || userAgent.indexOf("Android") > -1 || userAgent.indexOf("Adr") > -1 || (!!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/))){
+    isTouch = true;
+  }
+
+  if (navigator.platform === "iPad" ||
+    (navigator.platform === "MacIntel")) {
+    // iPad
+    isTouch = false;
+  }
   return {
-    isTouch: maxTouchPoints > 1 || userAgent.indexOf("Android") > -1 || userAgent.indexOf("Adr") > -1 || !!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+    isTouch,
   };
 }
 
