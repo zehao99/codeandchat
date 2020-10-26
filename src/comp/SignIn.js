@@ -12,7 +12,7 @@ export default function SignIn() {
     auth.signInWithPopup(provider);
   };
 
-  return (
+  const ctx = (
     <div className={styles.signInPage}>
       <h1>Welcome to Code and Chat, have fun.</h1>
       <p>
@@ -28,4 +28,6 @@ export default function SignIn() {
       </a>
     </div>
   );
+
+  return ctx;
 }

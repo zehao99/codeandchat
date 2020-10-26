@@ -12,6 +12,9 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import firebaseConfig from "./appInfo";
+import useJudgeTouch from "./utilities/useJudgeTouch";
+import useWindowDimensions from "./utilities/useWindowDimensions";
+import Dummy from "./comp/DummyComp";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -19,10 +22,16 @@ const authenticate = firebase.auth();
 const firestoreDB = firebase.firestore();
 
 function App() {
+  const { width, height } = useWindowDimensions();
+  const { isTouch } = useJudgeTouch();
   const [auth] = useState(authenticate);
   const [firestore] = useState(firestoreDB);
   const [user] = useAuthState(auth);
-  return (
+  return isTouch || width < 600 || height < 600 ? (
+    <div className={styles.App}>
+      <Dummy />
+    </div>
+  ) : (
     <AuthContext.Provider value={auth}>
       <FirestoreContext.Provider value={firestore}>
         <div className={styles.App}>
