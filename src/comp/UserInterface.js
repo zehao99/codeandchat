@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
 import { AuthContext, FirestoreContext } from "../context/AuthContext";
-import { useDocumentData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/app";
 import ChatRoom from "./ChatRoom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

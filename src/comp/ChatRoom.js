@@ -6,11 +6,8 @@ import "firebase/firestore";
 import "firebase/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import styles from "./ChatRoom.module.scss";
-import useWindowDimensions from "../utilities/useWindowDimensions";
 import CodeEditor from "./CodeEditor";
 import { useParams, NavLink } from "react-router-dom";
-import useJudgeTouch from "../utilities/useJudgeTouch";
-import Dummy from "./DummyComp";
 
 function ChatRoom(props) {
   const { sessionID } = useParams();
