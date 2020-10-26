@@ -3,6 +3,7 @@ import SessionCard from "./SessionCard";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./SessionList.module.scss";
 import SignOut from "../SignOut";
+import { motion } from "framer-motion";
 
 const SessionList = (props) => {
   const [sessionIDAdd, setSessionIDAdd] = useState("");
@@ -19,7 +20,12 @@ const SessionList = (props) => {
 
   return (
     <div>
-      <div className={styles.sessionsTitle}>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className={styles.sessionsTitle}
+      >
         <img src={auth.currentUser.photoURL} alt="userImg" />
         <h1>
           {auth.currentUser.displayName
@@ -29,8 +35,13 @@ const SessionList = (props) => {
           Sessions
         </h1>
         <SignOut />
-      </div>
-      <div className={styles.joinOptions}>
+      </motion.div>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className={styles.joinOptions}
+      >
         <input
           placeholder="Session ID"
           value={sessionIDAdd}
@@ -38,8 +49,13 @@ const SessionList = (props) => {
         />
         <button onClick={joinSessionHandler}>Join Session</button>
         <button onClick={props.startNewSession}>create new session</button>
-      </div>
-      <div className={styles.sessionCardContainer}>
+      </motion.div>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className={styles.sessionCardContainer}
+      >
         {props.sessions ? (
           props.sessions.map((s) => (
             <SessionCard
@@ -61,7 +77,7 @@ const SessionList = (props) => {
             No session yet, please create or join one.
           </p>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

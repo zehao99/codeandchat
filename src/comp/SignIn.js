@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./SignIn.module.scss";
+import { motion } from "framer-motion";
 
 /**
  * Component for sign in and landing page.
@@ -16,7 +17,12 @@ export default function SignIn() {
   };
 
   const ctx = (
-    <div className={styles.signInPage}>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.4 }}
+      className={styles.signInPage}
+    >
       <h1>Welcome to Code and Chat, have fun.</h1>
       <p>
         In this application, you can collaborate with your friends on a code
@@ -29,7 +35,7 @@ export default function SignIn() {
       <a href="https://github.com/zehao99/easychat">
         <FontAwesomeIcon icon={faGithub} /> Github
       </a>
-    </div>
+    </motion.div>
   );
 
   return ctx;

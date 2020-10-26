@@ -8,6 +8,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import styles from "./ChatRoom.module.scss";
 import CodeEditor from "./CodeEditor";
 import { useParams, NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function ChatRoom(props) {
   const { sessionID } = useParams();
@@ -39,7 +40,12 @@ function ChatRoom(props) {
   };
 
   const ctx = (
-    <div className={styles.chatPageContainer}>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.4 }}
+      className={styles.chatPageContainer}
+    >
       <div className={styles.codeEditor}>
         <CodeEditor docID={sessionID} />
       </div>
@@ -67,7 +73,7 @@ function ChatRoom(props) {
           <button type="submit">Send</button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 
   return ctx;
