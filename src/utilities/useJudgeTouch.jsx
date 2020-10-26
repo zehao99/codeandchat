@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+/**
+ * React hook for testing if the device is mobile device.
+ */
 
 export function getJudgeTouch() {
   const { userAgent, maxTouchPoints } = navigator;
@@ -14,6 +17,7 @@ export default function useWindowDimensions() {
   );
 
   useEffect(() => {
+    // For testing on desktop Chrome
     function handleResize() {
         setIsTouch(getJudgeTouch());
       }

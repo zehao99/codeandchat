@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { AuthContext, FirestoreContext } from "../context/AuthContext";
 import firebase from "firebase/app";
 import ChatRoom from "./ChatRoom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import SessionList from "./SessionList/SessionList";
 
 /**
@@ -42,15 +42,11 @@ function UserInterface(props) {
       const user = await userQuery.get();
       const userData = user.data();
       if (!userData) {
-        console.log(userData);
-        const a = await userQuery.set(newUserInfo);
-        console.log(a);
+        await userQuery.set(newUserInfo);
         setUserInfo(newUserInfo);
       } else {
-        console.log(userData);
         userData.lastLogin = firebase.firestore.FieldValue.serverTimestamp();
-        const a = await userQuery.set(userData);
-        console.log(a);
+        await userQuery.set(userData);
         setUserInfo(userData);
       }
     }, 100);
@@ -63,12 +59,10 @@ function UserInterface(props) {
     const { id } = await sessionRef.add(newSessionInfo);
     const docRef = { ...newSessionInfo };
     docRef.id = id;
-    console.log(docRef);
     addSessionToUser(docRef);
   };
 
   const addToSession = async (id) => {
-    console.log(id);
     const sessionGet = await sessionRef.doc(id).get();
     const docRef = sessionGet.data();
     if (!docRef) return false;
@@ -88,7 +82,6 @@ function UserInterface(props) {
       }
     });
     if (contain) return;
-    console.log(docRef);
     temp.sessions.push({ id: docRef.id, email: docRef.owner.email });
     setUserInfo(temp);
     userQuery.set(userInfo);
@@ -96,11 +89,9 @@ function UserInterface(props) {
 
   const deleteSessionFromUser = (id) => {
     const temp = { ...userInfo };
-    console.log(id, temp.sessions);
     temp.sessions = temp.sessions.filter((e) => {
       return e.id !== id;
     });
-    console.log(temp);
     setUserInfo(temp);
     userQuery.set(userInfo);
   };

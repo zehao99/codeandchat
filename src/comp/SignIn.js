@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./SignIn.module.scss";
 
+/**
+ * Component for sign in and landing page.
+ */
 export default function SignIn() {
   const auth = useContext(AuthContext);
   const signInWithGoogle = () => {

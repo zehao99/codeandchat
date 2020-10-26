@@ -45,6 +45,12 @@ function ChatRoom(props) {
       </div>
       <div className={styles.chatContainer}>
         <div className={styles.userOptions}>
+          <img src={auth.currentUser.photoURL} alt="user-img" />
+          <p>
+            {auth.currentUser.displayName
+              ? auth.currentUser.displayName
+              : "Untitled User"}
+          </p>
           <NavLink to="/"> Back </NavLink>
         </div>
         <div className={styles.chatMsgShow}>

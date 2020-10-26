@@ -1,23 +1,49 @@
 @import "../Color.scss";
 
+$SessionDecorationBgColor: rgba(255, 255, 255, 0.1);
+
 .sessionsTitle {
   color: $lightTextColor;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 12vh;
+  background-color: $SessionDecorationBgColor;
+
+  img {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+  }
+
   h1 {
     font-family: "Trispace", sans-serif;
     display: inline;
     padding: 0.5rem 1rem;
+  }
+
+  button {
+    color: $primaryColor;
+    background-color: $primaryColorComplimentary;
+    &:hover {
+      background-color: $btnHoverBackgroundColor;
+    }
   }
 }
 
 .joinOptions {
   display: flex;
   justify-content: center;
-  margin: 1rem auto;
-  width: 80vw;
+  margin: 0rem auto;
+  width: 100vw;
+  align-items: center;
+  height: 8vh;
+  background-color: $SessionDecorationBgColor;
+
   input {
+    max-width: 300px;
+    height: 2rem;
     background-color: #e0efff;
     font-family: "Trispace", sans-serif;
     border-radius: 0.5rem;

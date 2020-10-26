@@ -12,8 +12,9 @@ import "ace-builds/src-noconflict/theme-monokai";
 import diff_match_patch from "diff-match-patch";
 
 /**
- * Code editor component with update function
- * @param {*} props
+ * Code editor component with database update function
+ *
+ * @param {*} props Input props
  */
 const CodeEditor = (props) => {
   const auth = useContext(AuthContext);
@@ -31,7 +32,6 @@ const CodeEditor = (props) => {
 
   useEffect(() => {
     if (!code || !code.code) return;
-    console.log(auth);
     const recievedCode = code.code;
     if (recievedCode === patchedCode) return;
     if (recievedCode !== codeInput) {
