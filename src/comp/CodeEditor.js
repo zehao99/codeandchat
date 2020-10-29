@@ -42,6 +42,18 @@ langValues.forEach((lang) => {
   require(`ace-builds/src-noconflict/snippets/${lang}`);
 });
 
+const themesShow = [
+  "Monokai",
+  "Github",
+  "Tomorrow",
+  "Kuroir",
+  "Twilight",
+  "XCode",
+  "Textmate",
+  "Solarized",
+  "Terminal",
+];
+
 const themes = [
   "monokai",
   "github",
@@ -51,7 +63,6 @@ const themes = [
   "xcode",
   "textmate",
   "solarized_dark",
-  "solarized_light",
   "terminal",
 ];
 
@@ -138,7 +149,7 @@ const CodeEditor = (props) => {
         <p>Language: </p>
         <LangSelector values={langShow} onChange={handleLangChange} />
         <p>Theme: </p>
-        <LangSelector values={themes} onChange={handleThemeChange} />
+        <LangSelector values={themesShow} onChange={handleThemeChange} />
         <p
           className={styles.autocompleteButton}
           style={

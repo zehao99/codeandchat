@@ -5,5 +5,8 @@ For url direct visiting, Hash Router is used.
 ## UpNext
 
 1. Move conversation into session.
+   1. Use WebRTC
+   2. Record offers inside session
+   3. Achieve voice communication
 2. Add active person inside session function.
 3. Add private session.

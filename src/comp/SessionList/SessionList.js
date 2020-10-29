@@ -50,12 +50,7 @@ const SessionList = (props) => {
         <button onClick={joinSessionHandler}>Join Session</button>
         <button onClick={props.startNewSession}>create new session</button>
       </motion.div>
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className={styles.sessionCardContainer}
-      >
+      <motion.div className={styles.sessionCardContainer}>
         {props.sessions ? (
           props.sessions.map((s) => (
             <SessionCard
