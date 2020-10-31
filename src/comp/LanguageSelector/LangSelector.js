@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import styles from "./LangSelector.module.scss";
+import { motion } from "framer-motion";
+
 const LangSelector = (props) => {
   const langList = props.values ? props.values : ["java", "c++", "python"];
 
@@ -35,7 +37,12 @@ const LangSelector = (props) => {
         </button>
       </div>
       {showList && (
-        <div className={styles.langListItems}>
+        <motion.div
+          initial={{ scale: 0, y: "-50%" }}
+          animate={{ scale: 1, y: "0%" }}
+          transition={{ duration: 0.1 }}
+          className={styles.langListItems}
+        >
           {langList.map((e, idx) => (
             <p
               key={idx}
@@ -45,7 +52,7 @@ const LangSelector = (props) => {
               {e}
             </p>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

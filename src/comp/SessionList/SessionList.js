@@ -50,7 +50,7 @@ const SessionList = (props) => {
         <button onClick={joinSessionHandler}>Join Session</button>
         <button onClick={props.startNewSession}>create new session</button>
       </motion.div>
-      <motion.div className={styles.sessionCardContainer}>
+      <div className={styles.sessionCardContainer}>
         {props.sessions ? (
           props.sessions.map((s) => (
             <SessionCard
@@ -72,7 +72,7 @@ const SessionList = (props) => {
             No session yet, please create or join one.
           </p>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };

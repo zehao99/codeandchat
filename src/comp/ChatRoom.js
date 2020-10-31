@@ -31,6 +31,8 @@ function ChatRoom(props) {
     await messageRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      email: auth.currentUser.email,
+      displayName: auth.currentUser.displayName,
       uid,
       photoURL,
     });
@@ -50,6 +52,10 @@ function ChatRoom(props) {
       e.preventDefault();
       sendMessage("1");
     }
+  };
+
+  const handleDelete = async (id) => {
+    await messageRef.doc(id).delete();
   };
 
   const ctx = (
@@ -76,7 +82,16 @@ function ChatRoom(props) {
         </div>
         <div className={styles.chatMsgShow}>
           {messages &&
-            messages.map((msg) => <ChatMessage key={msg.id} msg={msg} />)}
+            messages.map((msg) => (
+              <ChatMessage
+                key={msg.id}
+                msg={msg}
+                id={msg.id}
+                email={msg.email}
+                displayName={msg.displayName}
+                handleDelete={handleDelete}
+              />
+            ))}
 
           <div ref={dummy}></div>
         </div>

@@ -22,7 +22,7 @@ export function getJudgeTouch() {
   };
 }
 
-export default function useWindowDimensions() {
+export default function useJudgeTouch() {
   const [isTouch, setIsTouch] = useState(
     getJudgeTouch()
   );
