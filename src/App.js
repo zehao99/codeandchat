@@ -27,7 +27,7 @@ function App() {
   const [auth] = useState(authenticate);
   const [firestore] = useState(firestoreDB);
   const [user] = useAuthState(auth);
-  return isTouch || width < 600 || height < 600 ? (
+  return isTouch || width < 500 || height < 100 ? (
     <div className={styles.App}>
       <Dummy />
     </div>

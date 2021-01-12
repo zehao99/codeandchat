@@ -8,7 +8,7 @@ export function getJudgeTouch() {
   const { userAgent, maxTouchPoints, platform } = navigator;
   let isTouch = false;
   // All Multi-TouchDevice
-  if( maxTouchPoints > 1 || userAgent.indexOf("Android") > -1 || userAgent.indexOf("Adr") > -1 || (!!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/))){
+  if(  userAgent.indexOf("Android") > -1 || userAgent.indexOf("Adr") > -1 || (!!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/))){
     isTouch = true;
   }
 

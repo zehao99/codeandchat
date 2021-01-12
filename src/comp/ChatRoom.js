@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, lazy, Suspense } from "react";
 import { AuthContext, FirestoreContext } from "../context/AuthContext";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase/app";
@@ -6,11 +6,11 @@ import "firebase/firestore";
 import "firebase/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import styles from "./ChatRoom.module.scss";
-import CodeEditor from "./CodeEditor";
 import { useParams, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+const CodeEditor = lazy(() => import("./CodeEditor"));
 
 function ChatRoom(props) {
   const { sessionID } = useParams();
@@ -66,7 +66,16 @@ function ChatRoom(props) {
       className={styles.chatPageContainer}
     >
       <div className={styles.codeEditor}>
-        <CodeEditor docID={sessionID} />
+        <Suspense
+          fallback={
+            <div className={styles.editorLoadingText}>
+              <p>Loading Code Editor...</p>
+              <p>This might take 10 to 30s</p>
+            </div>
+          }
+        >
+          <CodeEditor docID={sessionID} />
+        </Suspense>
       </div>
       <div className={styles.chatContainer}>
         <div className={styles.userOptions}>
